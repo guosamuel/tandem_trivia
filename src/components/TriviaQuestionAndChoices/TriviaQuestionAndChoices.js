@@ -27,20 +27,23 @@ export default function TriviaQuestionAndChoices({ currentData, chooseRandomQues
     if (e.target.innerText === currentData.correct) {
       dispatch({type: "INCREASE_CORRECT_QUESTION_COUNT"})
       setAnsweredCorrectly(true)
-      console.log("CORRECT!")
     } else {
       setAnsweredCorrectly(false)
-      console.log("NOPE!")
     }
+  }
+
+  const handleViewResults = () => {
+    dispatch({type: "FINISH_TRIVIA"})
   }
 
   return (
     <>
+      <h2>Question {state.questionCount} of 10</h2>
       <h3>{currentData.question}</h3>
       <ol>
         {randomizedChoices.map( (choice, idx) => <li key={idx} onClick={answeredQuestion ? null : handleClick}>{choice}</li>)}
       </ol>
-      <button onClick={chooseRandomQuestion} disabled={!answeredQuestion}>Next Question</button>
+      { state.questionCount === 10 ? (<button onClick={handleViewResults} disabled={!answeredQuestion}>View Results</button>) : (<button onClick={chooseRandomQuestion} disabled={!answeredQuestion}>Next Question</button>) }
       { answeredQuestion ? (<h4>{answeredCorrectly ? "Correct!" : `Wrong! The correct answer is ${currentData.correct}.` }</h4>) : null}
     </>
   )

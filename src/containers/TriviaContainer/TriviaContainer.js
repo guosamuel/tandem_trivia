@@ -18,9 +18,13 @@ export default function TriviaContainer() {
     setCurrentData(state.triviaData[randomIndex])
   }
 
-  const handleOnClick = () => {
+  const startTrivia = () => {
     chooseRandomQuestion()
     dispatch({type: "START_TRIVIA"})
+  }
+
+  const resetTrivia = () => {
+    dispatch({type: "RESET_TO_INITIAL_STATE"})
   }
 
   return (
@@ -37,7 +41,15 @@ export default function TriviaContainer() {
         )
 
       ) : (
-        <button onClick={handleOnClick}>Start!</button>
+          state.questionCount === 10 ? (
+            <>
+              <h3>You answered {state.correctQuestionCount} out of 10 correctly!</h3>
+              {state.correctQuestionCount !== 10 ? (<p>There's room for improvment! Let's give it another shot!</p>) : null}
+              <button onClick={resetTrivia}>Play Again</button>
+            </>
+          ) : (
+            <button onClick={startTrivia}>Start!</button>
+          )
       )}
     </>
   )

@@ -13,7 +13,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch(action.type) {
     case "INCREASE_CORRECT_QUESTION_COUNT":
-    return {
+      return {
         ...state,
         correctQuestionCount: state.correctQuestionCount + 1
       }
@@ -29,8 +29,16 @@ const reducer = (state, action) => {
       }
     case "START_TRIVIA":
       return {
-        ...state, start: true
+        ...state,
+        start: true
       }
+    case "FINISH_TRIVIA":
+      return {
+        ...state,
+        start: false
+      }
+    case "RESET_TO_INITIAL_STATE":
+      return initialState
     default:
       return state
   }
