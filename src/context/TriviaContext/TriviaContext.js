@@ -6,11 +6,17 @@ export const TriviaContext = createContext();
 const initialState = {
   triviaData: data,
   start: false,
-  questionCount: 0
+  questionCount: 0,
+  correctQuestionCount: 0
 }
 
 const reducer = (state, action) => {
   switch(action.type) {
+    case "INCREASE_CORRECT_QUESTION_COUNT":
+    return {
+        ...state,
+        correctQuestionCount: state.correctQuestionCount + 1
+      }
     case "CHOOSE_RANDOM_QUESTION":
       return {
         ...state,

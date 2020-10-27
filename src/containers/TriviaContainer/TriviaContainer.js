@@ -6,11 +6,8 @@ export default function TriviaContainer() {
   const [ state, dispatch ] = useContext(TriviaContext);
   const [ currentData, setCurrentData ] = useState(null)
 
-  console.log(state.triviaData.length, state.questionCount)
-
   const chooseRandomQuestion = () => {
-    let randomIndex = Math.floor(Math.random() * (state.triviaData.length + 1))
-    console.log("randomIndex", randomIndex)
+    let randomIndex = Math.floor(Math.random() * (state.triviaData.length))
     setCurrentData(state.triviaData[randomIndex])
     dispatch({type: "CHOOSE_RANDOM_QUESTION", payload: randomIndex})
     dispatch({type: "INCREASE_QUESTION_COUNT"})
