@@ -43,19 +43,20 @@ export default function TriviaQuestionAndChoices({
     <>
       <h2>Question {state.questionCount} of 10</h2>
       <h3>{currentData.question}</h3>
-      <ol>
+      <ol type="A">
         {randomizedChoices.map((choice, idx) => (
           <li key={idx} onClick={answeredQuestion ? null : handleClick}>
             {choice}
           </li>
         ))}
       </ol>
+      <br />
       {state.questionCount === 10 ? (
-        <button onClick={handleViewResults} disabled={!answeredQuestion}>
+        <button className="btn btn-primary" onClick={handleViewResults} disabled={!answeredQuestion}>
           View Results
         </button>
       ) : (
-        <button onClick={chooseRandomQuestion} disabled={!answeredQuestion}>
+        <button className="btn btn-primary" onClick={chooseRandomQuestion} disabled={!answeredQuestion}>
           Next Question
         </button>
       )}
