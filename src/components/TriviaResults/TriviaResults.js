@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { TriviaContext } from "../../context/TriviaContext/TriviaContext";
 
 export default function TriviaResults() {
-  const [state, dispatch] = useContext(TriviaContext);
+  const [state] = useContext(TriviaContext);
 
   return (
     <>
