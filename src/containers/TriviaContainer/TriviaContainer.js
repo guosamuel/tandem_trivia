@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { TriviaContext } from "../../context/TriviaContext/TriviaContext";
 import TriviaQuestionAndChoices from "../../components/TriviaQuestionAndChoices/TriviaQuestionAndChoices";
+import TriviaResults from "../../components/TriviaResults/TriviaResults";
 
 export default function TriviaContainer() {
   const [state, dispatch] = useContext(TriviaContext);
@@ -46,12 +47,7 @@ export default function TriviaContainer() {
         )
       ) : state.questionCount === 10 ? (
         <>
-          <h3>
-            You answered {state.correctQuestionCount} out of 10 correctly!
-          </h3>
-          {state.correctQuestionCount !== 10 ? (
-            <p>There's room for improvment! Let's give it another shot!</p>
-          ) : null}
+          <TriviaResults />
           <button onClick={resetTrivia}>Play Again</button>
         </>
       ) : (
