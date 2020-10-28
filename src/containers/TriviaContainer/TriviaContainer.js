@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { TriviaContext } from "../../context/TriviaContext/TriviaContext";
 import TriviaQuestionAndChoices from "../../components/TriviaQuestionAndChoices/TriviaQuestionAndChoices";
 import TriviaResults from "../../components/TriviaResults/TriviaResults";
+import TriviaQuestionRefresher from "../../components/TriviaQuestionRefresher/TriviaQuestionRefresher";
 
 export default function TriviaContainer() {
   const [state, dispatch] = useContext(TriviaContext);
@@ -37,21 +38,14 @@ export default function TriviaContainer() {
             chooseRandomQuestion={chooseRandomQuestion}
           />
         ) : (
-          <>
-            <h3>
-              There seems to be an error. Please hit the Refresh button to load
-              a new question.
-            </h3>
-            <button onClick={refreshQuestion}>Refresh</button>
-          </>
+          <TriviaQuestionRefresher refreshQuestion={refreshQuestion} />
         )
       ) : state.questionCount === 10 ? (
-        <>
-          <TriviaResults />
-          <button className="btn btn-primary" onClick={resetTrivia}>Play Again</button>
-        </>
+        <TriviaResults resetTrivia={resetTrivia} />
       ) : (
-        <button className="btn btn-primary" onClick={startTrivia}>Start!</button>
+        <button className="btn btn-primary" onClick={startTrivia}>
+          Start!
+        </button>
       )}
     </>
   );

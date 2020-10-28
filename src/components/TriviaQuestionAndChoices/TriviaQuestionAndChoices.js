@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { TriviaContext } from "../../context/TriviaContext/TriviaContext";
+import TriviaChoice from "../TriviaChoice/TriviaChoice";
 
 export default function TriviaQuestionAndChoices({
   currentData,
@@ -23,10 +24,16 @@ export default function TriviaQuestionAndChoices({
 
     setAnsweredQuestion(false);
     setAnsweredCorrectly(null);
+
+    /* THE CODE BELOW RESETS ALL OF THE CLASS NAMES FOR THE TRIVIA CHOICES */
+    [...document.getElementsByTagName("li")].forEach(
+      (el) => (el.className = "")
+    );
   }, [currentData]);
 
   const handleClick = (e) => {
     setAnsweredQuestion(true);
+    e.target.className = "selected-outline";
     if (e.target.innerText === currentData.correct) {
       dispatch({ type: "INCREASE_CORRECT_QUESTION_COUNT" });
       setAnsweredCorrectly(true);
@@ -45,21 +52,34 @@ export default function TriviaQuestionAndChoices({
       <h3>{currentData.question}</h3>
       <ol type="A">
         {randomizedChoices.map((choice, idx) => (
-          <li key={idx} onClick={answeredQuestion ? null : handleClick}>
-            {choice}
-          </li>
+          <TriviaChoice
+            key={idx}
+            choice={choice}
+            handleClick={handleClick}
+            answeredQuestion={answeredQuestion}
+          />
         ))}
       </ol>
       <br />
       {state.questionCount === 10 ? (
-        <button className="btn btn-primary" onClick={handleViewResults} disabled={!answeredQuestion}>
+        <button
+          className="btn btn-primary"
+          onClick={handleViewResults}
+          disabled={!answeredQuestion}
+        >
           View Results
         </button>
       ) : (
-        <button className="btn btn-primary" onClick={chooseRandomQuestion} disabled={!answeredQuestion}>
+        <button
+          className="btn btn-primary"
+          onClick={chooseRandomQuestion}
+          disabled={!answeredQuestion}
+        >
           Next Question
         </button>
       )}
+      <br />
+      <br />
       {answeredQuestion ? (
         <h4>
           {answeredCorrectly

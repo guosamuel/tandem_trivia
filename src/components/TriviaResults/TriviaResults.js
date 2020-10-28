@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { TriviaContext } from "../../context/TriviaContext/TriviaContext";
 
-export default function TriviaResults() {
+export default function TriviaResults({ resetTrivia }) {
   const [state] = useContext(TriviaContext);
 
   return (
@@ -14,6 +14,9 @@ export default function TriviaResults() {
           Amazing, you got all {state.correctQuestionCount} questions right!
         </p>
       )}
+      <button className="btn btn-primary" onClick={resetTrivia}>
+        Play Again
+      </button>
     </>
   );
 }
