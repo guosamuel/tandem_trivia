@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { render } from '@testing-library/react'
 import TriviaQuestionAndChoices from './TriviaQuestionAndChoices'
-import { TriviaContextProvider } from '../../context/TriviaContext/TriviaContext'
+import { TriviaContextProvider, reducer, TriviaContext } from '../../context/TriviaContext/TriviaContext'
 
 const data = {
   question: "What was Tandem previous name?",
@@ -28,41 +28,30 @@ it("renders properly on intial render", () => {
 })
 
 it("renders view results button", () => {
-  const initialState = {
+  const startingState = {
     questionCount: 10,
     start: true
   }
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "FINISH_TRIVIA":
-        return {
-          ...state,
-          start: false
-        }
-      default:
-        return state
-    }
-  }
-
   const DummyProvider = (props) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, startingState)
 
     return (
-      <DummyProvider
+      <TriviaContext.Provider value={[state, dispatch]}>
+        {props.children}
+      </TriviaContext.Provider>
     )
   }
 
   const { getByTestId } = render(
-    <TriviaContextProvider value={[state, dispatch]}>
+    <DummyProvider>
       <TriviaQuestionAndChoices currentData={data} chooseRandomQuestion={chooseRandomQuestion} />
-    </TriviaContextProvider>
+    </DummyProvider>
   )
 
   expect(getByTestId("question-tracker").textContent).toBe("Question 10 of 10")
   expect(getByTestId("question").textContent).toBe("What was Tandem previous name?")
   expect(document.getElementsByTagName("ol").length).toBe(1)
   expect(document.getElementsByTagName("li").length).toBe(4)
-  expect(getByTestId("next-question-button").textContent).toBe("Next Question")
   expect(getByTestId("view-results-button").textContent).toBe("View Results")
 })

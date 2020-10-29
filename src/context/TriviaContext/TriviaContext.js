@@ -10,7 +10,7 @@ const initialState = {
   correctQuestionCount: 0,
 };
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case "INCREASE_CORRECT_QUESTION_COUNT":
       return {

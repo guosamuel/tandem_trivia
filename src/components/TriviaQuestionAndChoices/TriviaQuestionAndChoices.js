@@ -83,7 +83,7 @@ export default function TriviaQuestionAndChoices({
       <br />
       <br />
       {answeredQuestion ? (
-        <h4 data-testId="answer-response">
+        <h4 data-testid="answer-response">
           {answeredCorrectly
             ? "Correct!"
             : `Wrong! The correct answer is ${currentData.correct}.`}
