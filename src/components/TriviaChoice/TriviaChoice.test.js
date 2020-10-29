@@ -5,7 +5,7 @@ import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 const handleClick = () => {
-  console.log("derp")
+  console.log("I am just a dummy function")
 }
 
 it("renders properly without any props", () => {

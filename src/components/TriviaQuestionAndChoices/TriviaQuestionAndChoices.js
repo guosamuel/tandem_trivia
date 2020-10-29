@@ -48,8 +48,8 @@ export default function TriviaQuestionAndChoices({
 
   return (
     <>
-      <h2>Question {state.questionCount} of 10</h2>
-      <h3>{currentData.question}</h3>
+      <h2 data-testid="question-tracker">Question {state.questionCount} of 10</h2>
+      <h3 data-testid="question">{currentData.question}</h3>
       <ol type="A">
         {randomizedChoices.map((choice, idx) => (
           <TriviaChoice
@@ -63,6 +63,7 @@ export default function TriviaQuestionAndChoices({
       <br />
       {state.questionCount === 10 ? (
         <button
+          data-testid="view-results-button"
           className="btn btn-primary"
           onClick={handleViewResults}
           disabled={!answeredQuestion}
@@ -71,6 +72,7 @@ export default function TriviaQuestionAndChoices({
         </button>
       ) : (
         <button
+          data-testid="next-question-button"
           className="btn btn-primary"
           onClick={chooseRandomQuestion}
           disabled={!answeredQuestion}
@@ -81,7 +83,7 @@ export default function TriviaQuestionAndChoices({
       <br />
       <br />
       {answeredQuestion ? (
-        <h4>
+        <h4 data-testId="answer-response">
           {answeredCorrectly
             ? "Correct!"
             : `Wrong! The correct answer is ${currentData.correct}.`}
