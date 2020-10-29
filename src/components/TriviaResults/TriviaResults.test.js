@@ -37,7 +37,7 @@ it("renders properly with less than 10 questions answered correctly", () => {
   expect(getByTestId("play-again-button").textContent).toBe("Play Again");
 });
 
-it("renders properly with less than 10 questions answered correctly", () => {
+it("renders properly with all 10 questions answered correctly", () => {
   const startingState = {
     correctQuestionCount: 10,
   };

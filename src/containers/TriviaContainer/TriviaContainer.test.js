@@ -28,7 +28,7 @@ it("clicks on the start button", () => {
   userEvent.click(getByTestId("start-button"));
 
   /* SHOWS TriviaQuestionAndChoices COMPONENT RENDERED */
-  expect(getByTestId("question-tracker"));
+  expect(getByTestId("question-tracker")).toBeTruthy();
 });
 
 it("renders the question refresher component", () => {
@@ -54,7 +54,7 @@ it("renders the question refresher component", () => {
   );
 
   /* SHOWS TriviaQuestionRefresher COMPONENT RENDERED */
-  expect(getByTestId("question-refresher"));
+  expect(getByTestId("question-refresher")).toBeTruthy();
 });
 
 it("renders the trivia results component", () => {
@@ -80,5 +80,5 @@ it("renders the trivia results component", () => {
   );
 
   /* SHOWS TriviaReuslts COMPONENT RENDERED */
-  expect(getByTestId("results-message"));
+  expect(getByTestId("results-message")).toBeTruthy();
 });
