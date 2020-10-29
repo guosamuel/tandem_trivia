@@ -50,10 +50,11 @@ export default function TriviaQuestionAndChoices({
     <>
       <h2 data-testid="question-tracker">Question {state.questionCount} of 10</h2>
       <h3 data-testid="question">{currentData.question}</h3>
-      <ol type="A">
+      <ol data-testid="choices" type="A">
         {randomizedChoices.map((choice, idx) => (
           <TriviaChoice
             key={idx}
+            idx={idx}
             choice={choice}
             handleClick={handleClick}
             answeredQuestion={answeredQuestion}
