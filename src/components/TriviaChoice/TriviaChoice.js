@@ -17,7 +17,7 @@ export default function TriviaChoice({
 
   return (
     <li
-      data-testid={`choice-${idx+1}`}
+      data-testid={`choice-${idx + 1}`}
       className={isHover ? "hover-outline" : ""}
       onMouseEnter={answeredQuestion ? null : handleOnMouseEnter}
       onMouseLeave={answeredQuestion ? null : handleOnMouseLeave}

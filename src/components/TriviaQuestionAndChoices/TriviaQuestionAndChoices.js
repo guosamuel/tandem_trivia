@@ -48,7 +48,9 @@ export default function TriviaQuestionAndChoices({
 
   return (
     <>
-      <h2 data-testid="question-tracker">Question {state.questionCount} of 10</h2>
+      <h2 data-testid="question-tracker">
+        Question {state.questionCount} of 10
+      </h2>
       <h3 data-testid="question">{currentData.question}</h3>
       <ol data-testid="choices" type="A">
         {randomizedChoices.map((choice, idx) => (

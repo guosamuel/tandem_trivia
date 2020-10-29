@@ -43,7 +43,11 @@ export default function TriviaContainer() {
       ) : state.questionCount === 10 ? (
         <TriviaResults resetTrivia={resetTrivia} />
       ) : (
-        <button data-testid="start-button" className="btn btn-primary" onClick={startTrivia}>
+        <button
+          data-testid="start-button"
+          className="btn btn-primary"
+          onClick={startTrivia}
+        >
           Start!
         </button>
       )}
