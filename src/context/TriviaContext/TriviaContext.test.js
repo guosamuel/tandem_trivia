@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { TriviaContext, TriviaContextProvider } from './TriviaContext'
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 const TestComponent = () => {
