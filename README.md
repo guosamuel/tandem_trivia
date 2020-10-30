@@ -45,7 +45,7 @@ Your default browser should automatically open a new window or browser for Tande
 
 You will be greeted at the home page and a Start button to begin playing Tandem Trivia.
 
-There will be 10 questions randomly chosen from the question pile. You must answer the current question before moving onto the next question. You will know if you answered correctly for each question. You will not be able to go back and change your answer once you have selected your answer.
+There will be 10 questions randomly chosen from the question pile. You must answer the current question before moving onto the next question. You will know if you answered correctly for each question as shown below the button. You will not be able to go back and change your answer once you have selected your answer.
 
 After answering the last question, you will be directed to your results page which is a summary on the number of questions you answered correctly for the round. You can play a new round of Tandem Trivia by clicking on the `Play Again` button.
 
