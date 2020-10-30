@@ -33,7 +33,7 @@ To execute all of the tests, in your terminal, run the following command: `npm t
 
 If you would like to execute specific tests, please follow the prompts shown on your terminal after all the tests are executed.
 
-## Starting Trivia Tandem
+## Starting Tandem Trivia
 
 Tandem Trivia, by default, uses port 3000. Please ensure that you do not have any other applications running on that port prior to running Tandem Trivia.
 
